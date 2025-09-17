@@ -1,0 +1,244 @@
+package Registrant.obj;
+
+import java.awt.AWTException;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import Configuration.ConfigReader;
+import Drivermanager.Driver;
+import hooks.Baseclass;
+
+public class Rgnt_Officer_mgmt_obj extends Baseclass {
+	WebDriver driver = Driver.getDriver();
+
+	public Rgnt_Officer_mgmt_obj(WebDriver RC) {
+		driver = RC;
+		PageFactory.initElements(RC, this);
+	}
+
+	@FindBy(xpath = "//span[contains(text(),'User Management')]")
+	public WebElement USRMGMT;
+
+	public void user_navigate_to_USERmgmt_page() {
+		Clickelement(USRMGMT);
+		Actions act = new Actions(driver);
+		act.moveToElement(USRMGMT).build().perform();
+	}
+
+	@FindBy(xpath = "//a[contains(text(),'Super Admin Management')]")
+	public WebElement SUPERMGMT;
+	@FindBy(xpath = "//a[contains(text(),'Officer Details Management')]")
+	public WebElement Ofcmgmt;
+
+	@FindBy(xpath = "//div[contains(text(),'Officer Details Management')]")
+	public WebElement OFCMGMTtitle;
+	@FindBy(xpath = "//button[contains(text(),'Add Officer Details')]")
+	public WebElement Addofc_button;
+	@FindBy(xpath = "//tr/th")
+	public List<WebElement> Table_cols;
+
+	@FindBy(xpath = "//td[contains(text(),'Administrative Officer')]/following-sibling::td")
+	public List<WebElement> AO_F;
+	@FindBy(xpath = "//td[contains(text(),'Administrative Officer')]/preceding-sibling::td")
+	public List<WebElement> AO_P;
+	@FindBy(xpath = "//td[contains(text(),'Technical Officer')]/following-sibling::td")
+	public List<WebElement> TO_F;
+	@FindBy(xpath = "//td[contains(text(),'Technical Officer')]/preceding-sibling::td")
+	public List<WebElement> TO_P;
+	@FindBy(xpath = "//td[contains(text(),'Financial Officer')]/following-sibling::td")
+	public List<WebElement> FO_F;
+	@FindBy(xpath = "//td[contains(text(),'Financial Officer')]/preceding-sibling::td")
+	public List<WebElement> FO_P;
+
+	public void user_validate_the_officer_management_page() {
+		validatetext(SUPERMGMT, "Super Admin Management");
+		validatetext(Ofcmgmt, "Officer Details Management");
+		try {
+			Clickelement(Ofcmgmt);
+		} catch (Exception e) {
+			Clickelement(Ofcmgmt);
+		}
+
+		validatetext(OFCMGMTtitle, "Officer Details Management");
+		validatetext(Addofc_button, "Add Officer Details");
+		String Table_col = "Id,Entity Name,Officer Name,Designation,Mobile Number,Email ID,Role,View Documents,Login Status,Contact Approved,Delete Officer,Actions";
+		Table_prop(Table_cols, Table_col);
+
+		validatetext(AO_F.get(0), "View");
+		validatetext(AO_P.get(1), ConfigReader.getProperty("Domain").toUpperCase());
+		validatetext(AO_P.get(2), AO_P.get(2).getText());
+		validatetext(AO_P.get(3), AO_P.get(3).getText());
+		validatetext(AO_P.get(4), AO_P.get(4).getText());
+		validatetext(AO_P.get(5), AO_P.get(5).getText());
+
+		validatetext(TO_F.get(0), "View");
+		validatetext(TO_P.get(1), ConfigReader.getProperty("Domain").toUpperCase());
+		validatetext(TO_P.get(2), TO_P.get(2).getText());
+		validatetext(TO_P.get(3), TO_P.get(3).getText());
+		validatetext(TO_P.get(4), TO_P.get(4).getText());
+		validatetext(TO_P.get(5), TO_P.get(5).getText());
+		
+		validatetext(FO_F.get(0), "View");
+		validatetext(FO_P.get(1), ConfigReader.getProperty("Domain").toUpperCase());
+		validatetext(FO_P.get(2), FO_P.get(2).getText());
+		validatetext(FO_P.get(3), FO_P.get(3).getText());
+		validatetext(FO_P.get(4), FO_P.get(4).getText());
+		validatetext(FO_P.get(5), FO_P.get(5).getText());
+
+//		Clickelement(AO_F.get(1));
+		try {
+			Clickelement(AO_l);
+			Re_upload_documents();
+			driver.navigate().back();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Clickelement(FO_l);
+			Re_upload_documents();
+			driver.navigate().back();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Clickelement(TO_l);
+			Re_upload_documents();
+			driver.navigate().back();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FindBy(xpath = "//td[contains(text(),'Administrative Officer')]/following-sibling::td//a")
+	public WebElement AO_l;
+	@FindBy(xpath = "//td[contains(text(),'Technical Officer')]/following-sibling::td//a")
+	public WebElement TO_l;
+	@FindBy(xpath = "//td[contains(text(),'Financial Officer')]/following-sibling::td//a")
+	public WebElement FO_l;
+	
+	
+
+	@FindBy(xpath = "//h1[contains(text(),'Super Admin Management')]")
+	public WebElement SAtitle;
+	@FindBy(xpath = "//button[contains(text(),'Add Super Admin')]")
+	public WebElement AddSA_button;
+	@FindBy(xpath = "//input[@placeholder='Search']")
+	public WebElement Search ;
+
+	public void Super_admin_management(){
+		user_navigate_to_USERmgmt_page();
+		validatetext(SUPERMGMT, "Super Admin Management");
+		try {
+			Clickelement(SUPERMGMT);
+		} catch (Exception e) {
+			Clickelement(SUPERMGMT);
+		}
+		
+
+		validatetext(SAtitle, "Super Admin Management");
+		validatetext(AddSA_button, "Add Super Admin");
+		String Table_col = "Sl.No,User Id,User Name,Entity Name,Mobile Number,Role,Status,Actions";
+		Table_prop(Table_cols, Table_col);
+		List<WebElement> Domain_ID=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("Domain").toUpperCase()+"'])[1]/preceding-sibling::td"));
+		dispalyedattribute(Domain_ID.get(1), "1");
+		List<WebElement> Table_data1=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("Domain").toUpperCase()+"'])[1]/following-sibling::td"));
+		validatetext(Table_data1.get(0), Table_data1.get(0).getText());
+		validatetext(Table_data1.get(1), "Super Admin");
+		validatetext(Table_data1.get(2), "Active");
+		validatetext(Table_data1.get(3), "");
+		validateattribute(Search, "placeholder","Search");
+		
+	}
+	@FindBy(xpath = "//td[normalize-space()='Aadhaar']/following-sibling::td")
+	public List<WebElement> AAdhar_doc ;
+	@FindBy(xpath = "//td[normalize-space()='PAN']/following-sibling::td")
+	public List<WebElement> PAN_doc ;
+	@FindBy(xpath = "//td[normalize-space()='Organization Identity Card']/following-sibling::td")
+	public List<WebElement> ORG_doc ;
+	@FindBy(xpath = "//button[contains(text(),'Reupload')]")
+	public List<WebElement> reupload_doc ;
+	@FindBy(xpath = "//button[normalize-space()='Save']")
+	public WebElement save_doc ;
+
+	public void Re_upload_documents() throws AWTException, InterruptedException{
+		if(AAdhar_doc .get(0).getText().equals("Rejected")) {
+			Clickelement(reupload_doc.get(0));
+			sendkeyweb(reupload_number, "955385009348");
+			Clickelement(reupload_doc1 );
+			fileupload_robot( ConfigReader.getProperty("Adhar333"));
+			Clickelement(save_doc);
+			Thread.sleep(5000);
+		}
+		if(PAN_doc .get(0).getText().equals("Rejected")) {
+			Clickelement(reupload_doc.get(1));
+			sendkeyweb(reupload_number, ConfigReader.getProperty("TechPan"));
+			Clickelement(reupload_doc1 );
+			fileupload_robot( ConfigReader.getProperty("PAN222"));
+			Clickelement(save_doc);
+			Thread.sleep(5000);
+		}
+		if(ORG_doc .get(0).getText().equals("Rejected")) {
+			Clickelement(reupload_doc.get(2));
+			sendkeyweb(reupload_number, "");
+			Clickelement(reupload_doc1 );
+			fileupload_robot( ConfigReader.getProperty("ID3"));
+			Clickelement(save_doc);
+			Thread.sleep(5000);
+		}
+		
+		
+	}
+	@FindBy(xpath = "//input[@placeholder='Enter Aadhaar Number']")
+	public WebElement reupload_number ;
+	@FindBy(xpath = "//button[normalize-space()='Upload Document']")
+	public WebElement reupload_doc1 ;
+	@FindBy(xpath = "//button[normalize-space()='Save']")
+	public WebElement save_internal ;	
+	
+	public void user_reupload_the_officer_DOC() throws AWTException, InterruptedException {
+		validatetext(SUPERMGMT, "Super Admin Management");
+		validatetext(Ofcmgmt, "Officer Details Management");
+		try {
+			Clickelement(Ofcmgmt);
+		} catch (Exception e) {
+			Clickelement(Ofcmgmt);
+		}
+		try {
+			Clickelement(AO_F.get(0));
+			Re_upload_documents();
+			driver.navigate().back();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		try {
+			Clickelement(TO_F.get(0));
+			Thread.sleep(3000);
+			Re_upload_documents();
+			driver.navigate().back();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		try {
+			Clickelement(FO_F.get(0));
+			Thread.sleep(3000);
+			Re_upload_documents();
+			driver.navigate().back();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+	}
+	
+}

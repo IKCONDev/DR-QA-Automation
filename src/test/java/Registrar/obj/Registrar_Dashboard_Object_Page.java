@@ -1,0 +1,207 @@
+package Registrar.obj;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import Configuration.ConfigReader;
+import Configuration.ConfigWriter;
+import Drivermanager.Driver;
+import hooks.Baseclass;
+
+public class Registrar_Dashboard_Object_Page extends Baseclass{
+	WebDriver driver = Driver.getDriver();
+	ConfigWriter configWriter = new ConfigWriter();
+
+
+	public Registrar_Dashboard_Object_Page(WebDriver RC) {
+		driver = RC;
+		PageFactory.initElements(RC, this);
+	}
+	@FindBy(xpath="//input[@placeholder='Search']")
+	public WebElement Appsearchfun; 
+	@FindBy(xpath="//mat-icon[normalize-space()='apps']")
+	public WebElement Appsearch; 
+	@FindBy(xpath="//mat-icon[normalize-space()='public']")
+	public WebElement DomainSearch ;
+	@FindBy(xpath="//mat-icon[normalize-space()='description']")
+	public WebElement Invoicesearch ;
+	@FindBy(xpath="//a[@routerlink='/reports']//mat-icon[@role='img'][normalize-space()='dashboard']")
+	public WebElement Reportssearch;
+	@FindBy(xpath="//mat-icon[text()='settings']")
+	public WebElement Settingssearch ;
+
+
+
+	@FindBy(xpath="//a[normalize-space()='DR User Management']")
+	public WebElement DRUserManagementSearch ;
+	@FindBy(xpath="//input[@placeholder='Search']")
+	public WebElement UserManagementSearchtxtbox ;
+	@FindBy(xpath="//a[normalize-space()='Registrant User Management']")
+	public WebElement RegistrantUserManagementSearch ;
+	@FindBy(xpath="//a[normalize-space()='Registrant Officer Details']")
+	public WebElement RegistrantOfficerDetailsSearch ;
+	@FindBy(xpath="//a[normalize-space()='Registrar Roles']")
+	public WebElement RegistrarRolesSearch ;
+	@FindBy(xpath="//a[normalize-space()='Registrar Department']")
+	public WebElement RegistrarDepartmentSearch ;
+	@FindBy(xpath="//mat-icon[normalize-space()='dashboard']")
+	public WebElement Dashboardsearch ;
+	@FindBy(xpath="//span[text()='Reports']")
+	public WebElement ReportsSearch ;
+
+
+	public void User_check_allfields_in_Home_Page1() throws Exception {
+		Thread.sleep(8000);
+		Clickelement(Appsearch);
+		Thread.sleep(3000);
+		driver.navigate().back();
+		Thread.sleep(3000);
+		Clickelement(DomainSearch);
+		Thread.sleep(3000);
+		driver.navigate().back();
+		Thread.sleep(3000);
+		Clickelement(Invoicesearch);
+		Thread.sleep(3000);
+		driver.navigate().back();
+		Clickelement(ReportsSearch);
+		Thread.sleep(3000);
+		//driver.navigate().back();
+		Thread.sleep(3000);
+		//Clickelement(Reportssearch);
+		//Thread.sleep(3000);
+		//driver.navigate().back();
+		//Thread.sleep(3000);
+		Clickelement(Settingssearch);
+		Thread.sleep(3000);
+		
+		  Clickelement(DRUserManagementSearch); Thread.sleep(3000);
+		  Clickelement(Settingssearch); Thread.sleep(3000);
+		  Clickelement(RegistrantUserManagementSearch); Thread.sleep(3000);
+		  Clickelement(Settingssearch); Thread.sleep(3000);
+		  Clickelement(RegistrantOfficerDetailsSearch); Thread.sleep(3000);
+		  Clickelement(Settingssearch); Thread.sleep(3000);
+		  Clickelement(RegistrarRolesSearch); Thread.sleep(3000);
+		  Clickelement(Settingssearch); Thread.sleep(3000);
+		 Clickelement(RegistrarDepartmentSearch);
+		 
+		Thread.sleep(8000);
+		Clickelement(Dashboardsearch);
+
+		//driver.navigate().back();
+	}
+	//HOME PAGE
+
+		@FindBy(xpath="//div[contains(text(),'Total Entities')]")
+		public WebElement TotalOrganisationstxtval ;
+		@FindBy(xpath="//div[contains(text(),'Total Domains')]")
+		public WebElement TotalDomainstxtval ;
+		@FindBy(xpath="//div[contains(text(),'Application in queue')]")
+		public WebElement Applicationinqueuetxtval;
+		@FindBy(xpath="//div[contains(text(),'Active Users')]")
+		public WebElement ActiveUserstxtval;
+		@FindBy(xpath="//p[normalize-space()='Domain Registration Trends']")
+		public WebElement DomainRegistrationTrendstextval;
+		@FindBy(xpath="//p[normalize-space()='Application By Status']")
+		public WebElement ApplicationByStatustext;
+		@FindBy(xpath="//p[normalize-space()='Application In Queue']")
+		public WebElement ApplicationInQueuetextvl;
+		
+		@FindBy(xpath="(//span[@class='ng-arrow-wrapper'])[1]")
+		public WebElement DomainregistarationDemoDD;
+		@FindBy(xpath="//span[contains(text(),'Weekly')]")
+		public WebElement DomainDemoDDselweek;
+		@FindBy(xpath="//span[contains(text(),'Monthly')]")
+		public WebElement DomainDemoDDselmonthly;
+		@FindBy(xpath="//span[contains(text(),'Yearly')]")
+		public WebElement DomainDemoDDselyearly;
+		
+		@FindBy(xpath="(//span[@class='ng-arrow-wrapper'])[2]")
+		public WebElement ApplicationstatusDD;
+		@FindBy(xpath="//span[contains(text(),'Weekly')]")
+		public WebElement Applicationstatusselweek;
+		@FindBy(xpath="//span[contains(text(),'Monthly')]")
+		public WebElement Applicationstatusselmonthly;
+		@FindBy(xpath="(//span[contains(text(),'Yearly')])[2]")
+		public WebElement Applicationstatusselyearly;
+		
+		
+
+		public void User_textvaladation_in_Home_Main_Page1() throws Exception {
+			validatetext(TotalOrganisationstxtval, "Total Entities");
+			validatetext(TotalDomainstxtval, "Total Domains");
+			validatetext(Applicationinqueuetxtval,"Application in queue");
+			validatetext(ActiveUserstxtval, "Active Users");
+			validatetext(DomainRegistrationTrendstextval, "Domain Registration Trends");
+			Thread.sleep(2000);
+			Clickelement(DomainregistarationDemoDD);
+			Thread.sleep(2000);
+			Clickelement(DomainDemoDDselweek);
+			Thread.sleep(2000);
+			Clickelement(DomainregistarationDemoDD);
+			Clickelement(DomainDemoDDselmonthly);
+			Thread.sleep(2000);
+			Clickelement(DomainregistarationDemoDD);
+			Clickelement(DomainDemoDDselyearly);
+			Thread.sleep(2000);
+			validatetext(ApplicationByStatustext, "Application By Status");
+			Thread.sleep(2000);
+			Clickelement(ApplicationstatusDD);
+			Thread.sleep(2000);
+			Clickelement(Applicationstatusselweek);
+			Thread.sleep(2000);
+			Clickelement(ApplicationstatusDD);
+			Thread.sleep(2000);
+			Clickelement(Applicationstatusselmonthly);
+			Thread.sleep(2000);
+			Clickelement(ApplicationstatusDD);
+			Thread.sleep(2000);
+			Clickelement(Applicationstatusselyearly);
+			
+			validatetext(ApplicationInQueuetextvl, "Application In Queue");
+				
+			
+		}
+		public void Create_ApplicationQuee_TextValidations_in_Home_Page() throws InterruptedException {
+			
+			
+			
+			
+			
+			String Apptableextvalues[] = { "Domain ID", "Domain Name", "Organisation Name","Registration Date", "Renewal Date", "Status"};
+			List<WebElement> val = driver.findElements(By.xpath("//table[@id='table1']//tr//th"));
+
+			for (int i = 0; i < val.size(); i++) {
+
+				validatetext(val.get(i), Apptableextvalues[i]);
+			}
+			sendkeyweb(Appsearchfun, ConfigReader.getProperty("OrgName"));
+			
+					List<WebElement> Orgname=driver.findElements(By.xpath("//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"']/following-sibling::td"));
+					List<WebElement> Orgname1=driver.findElements(By.xpath("//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"']/preceding-sibling::td"));
+
+					 //ConfigReader.getProperty("Domainnametxtval"));
+					
+				try {
+					dispalyedattribute(Orgname1.get(0), "ID");
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+			
+				try {
+					validatetext(Orgname1.get(1),ConfigReader.getProperty("DomainName"));
+					validatetext(Orgname.get(0),ConfigReader.getProperty("AppSubmissionDate")); 
+					validatetext(Orgname.get(1), ConfigReader.getProperty("DomRenewalDate"));
+					validatetext(Orgname.get(2), ConfigReader.getProperty("AppStatus2"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}       
+
+			}
+		}
+
