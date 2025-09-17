@@ -375,7 +375,7 @@ public WebElement  Approve3Click;
 public WebElement  Close3buttonClick;
 @FindBy(xpath="//span[text()='Board Resolution']")
 public WebElement BoardResolutionsearch  ;
-@FindBy(xpath="(//button[text()='Approve'])[5]")
+@FindBy(xpath="(//button[text()='Approve'])[6]")
 public WebElement  Approve4Click;
 @FindBy(xpath="//div[@id='viewTheBoardDocs']//span[@aria-hidden='true'][normalize-space()='×']")
 public WebElement  Close4buttonClick;
