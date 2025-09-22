@@ -354,20 +354,35 @@ public class Registrar_Domain_Object_Page extends Baseclass {
 		validatetext(statustxtval1, "Status");
 		Thread.sleep(5000);
 	}
+	
+	@FindBy(xpath = "(//div//h2[normalize-space()='Billing History'])/following::div[@class='col']")
+	public List<WebElement>Bill_table ;
+	
 		public void user_validatetext_BillingHistory_Fields() throws Exception
 		{
 		
-		List<WebElement> Status3=driver.findElements(By.xpath("//div[normalize-space()='"+ConfigReader.getProperty("Status3")+"']/preceding-sibling::div"));
-
-		//
-		dispalyedattribute(Status3.get(0), "ID"); 
-		configWriter.setProperty("InAmount", Status3.get(1).getText());
+		dispalyedattribute(Bill_table.get(0), "ID"); 
+		configWriter.setProperty("InAmount", Bill_table.get(1).getText());
 		configWriter.saveProperties();
-		validatetext(Status3.get(1), ConfigReader.getProperty("InAmount"));
-		configWriter.setProperty("InvoiceDate", Status3.get(2).getText());
+		validatetext(Bill_table.get(1), ConfigReader.getProperty("InAmount"));
+		configWriter.setProperty("InvoiceDate", Bill_table.get(2).getText());
 		configWriter.saveProperties();
-		validatetext(Status3.get(2), ConfigReader.getProperty("InvoiceDate"));
-		
+		validatetext(Bill_table.get(2), ConfigReader.getProperty("InvoiceDate"));
+		configWriter.setProperty("Statusafterapprove", Bill_table.get(3).getText());
+		configWriter.saveProperties();
+		validatetext(Bill_table.get(3), ConfigReader.getProperty("Statusafterapprove")); 
+		configWriter.setProperty("Innum", Bill_table.get(1).getText());
+		configWriter.saveProperties();
+		validatetext(Bill_table.get(4), ConfigReader.getProperty("Innum"));
+		configWriter.setProperty("Inamountval", Bill_table.get(5).getText());
+		configWriter.saveProperties();
+		validatetext(Bill_table.get(5), ConfigReader.getProperty("Inamountval"));
+		configWriter.setProperty("InvoiceDateval", Bill_table.get(6).getText());
+		configWriter.saveProperties();
+		validatetext(Bill_table.get(6), ConfigReader.getProperty("InvoiceDateval"));
+		configWriter.setProperty("Invoicesta", Bill_table.get(6).getText());
+		configWriter.saveProperties();
+		validatetext(Bill_table.get(6), ConfigReader.getProperty("Invoicesta"));
 		
 		
 		

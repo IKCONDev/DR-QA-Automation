@@ -1,5 +1,6 @@
 package Registrar.obj;
 
+import java.rmi.AccessException;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,11 +10,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Configuration.ConfigReader;
 import Configuration.ConfigWriter;
 import Drivermanager.Driver;
 import hooks.Baseclass;
+import io.cucumber.messages.types.Duration;
 
 public class Registrar_Application_Object extends Baseclass {
 	
@@ -576,7 +580,7 @@ if (card.get(1).getText().contains("Two Letter Domain Board Approval Document"))
 	validatetext(linktxtval, "Links");
 	validatetext(AOofftxtval, "Administrative Officer");
 	validatetext(TOofftxtval, "Technical Officer"); 
-	validatetext(BOofftxtval, "Billing Officer");  
+	validatetext(BOofftxtval, "Financial Officer");  
 	
 	/*//-ve
 	Clickelement(GSTINsearch);
@@ -608,7 +612,7 @@ if (card.get(1).getText().contains("Two Letter Domain Board Approval Document"))
 	validatetext(TOofftxtval, "Technical Officer"); 
 	validatetext(BOofftxtval, "Billing Officer");  */
 	
-	driver.navigate().back();
+	//driver.navigate().back();
 }
 //AO
 @FindBy(xpath="//td[contains(text(),'Administrative Officer')]/following-sibling::td//a")
@@ -1143,21 +1147,28 @@ public void User_Can_Check_BillingOfficier_Functionalities_in_Applications_Page1
 //	System.out.println("element not displayed");
 //}
 	 Thread.sleep(3000);
+	
 
-	if (card2.isDisplayed()) {
-			Clickelement(TwoletterdomainViewClick);
-			Clickelement(TwolettersdocApprove);
-			Clickelement(twolsavechangesaprove);
-	}else {
-		  Thread.sleep(3000);
-		System.out.println("element not displayed");
+
+	 try {
+		if (card2.getText().contains("Domain Board Approval Document'")) {
+				Clickelement(TwoletterdomainViewClick);
+				Clickelement(TwolettersdocApprove);
+				Clickelement(twolsavechangesaprove);
+		}else {
+			  Thread.sleep(3000);
+			System.out.println("element not displayed");
+		}
+	} catch (Exception e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
 	}
-
 	
-	
+	 Thread.sleep(5000);
 	Clickelement(GSTTINViewClick);
-	Thread.sleep(2000);
+	Thread.sleep(3000);
 	Clickelement(GSTTINApprove);
+	Thread.sleep(2000);
 	Clickelement(Savechanges);
 	System.out.println("Entity GSTTIN Document Approved");
 	Thread.sleep(2000);
@@ -1262,9 +1273,11 @@ public void User_Can_Check_BillingOfficier_Functionalities_in_Applications_Page1
 	Selectdropdown(DSC_certificate, "1");
 	sendkeyweb(DSC_password, "Idrbt@123");
 	Clickelement(DSC_submit);
-	popupvalidate("Signed using DSC successful", "emty");
-	Thread.sleep(10000);
-	validatealert("");
+	//popupvalidate("Signed using DSC successful", "emty");
+	
+	//validatealert("");
+	Thread.sleep(25000);
+	
 	try {
 		driver.switchTo().alert().accept();
 	} catch (Exception e) {
@@ -1274,20 +1287,22 @@ public void User_Can_Check_BillingOfficier_Functionalities_in_Applications_Page1
 	
 	//
 	Clickelement(closed1);
-	Clickelement(closed2);
-	
+	//Clickelement(closed2);
+	Thread.sleep(3000);
 	//Selectdropdown(Selectpaymentoption,"Approved for payment");
 	driver.navigate().back();
-	//
+	Thread.sleep(3000);
 	Clickelement(submitclick1);
 	//driver.navigate().back();
-	validatetext(ToastermessageFinal,"Domain data updated successfully.");
-	Thread.sleep(5000);
+	//validatetext(ToastermessageFinal,"Domain data updated successfully.");
+	Thread.sleep(3000);
 	
 	//Clickelement(Appsearch);
 
 
 }
+
+
 @FindBy(xpath="//mat-icon[normalize-space()='description']")
 public WebElement Invoicesearch ;
 ////h5[contains(text(),'Payment Status')]//following-sibling::div

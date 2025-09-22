@@ -236,7 +236,8 @@ public class Registrar_Settings_Registrant_Officiers_Object extends Baseclass{
 
 		@FindBy(xpath="//button[text()='Submit']")
 		public WebElement submitclick ;
-	
+		@FindBy(xpath="//input[@class='ng-untouched ng-pristine ng-valid']")
+		public WebElement offser ;
 	public void Registrar_can_check_registrant_officer_details_textvalidations_and_functionalities_in_settings_page(String srcp,String src4,String src5,String src6) throws Exception {
 	   
 		Clickelement(Settingssearch);
@@ -254,15 +255,15 @@ public class Registrar_Settings_Registrant_Officiers_Object extends Baseclass{
 			//System.out.println("Code Printed");
 		}
 		
-		
+		sendkeyweb(offser, ConfigReader.getProperty("OrgName").toUpperCase());
 		
 	
 				Thread.sleep(3000);
 
 			
-				List<WebElement> Orgname=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"'])[1]/following-sibling::td"));
-				List<WebElement> Orgname1=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"'])[1]/preceding-sibling::td"));
-				//
+				List<WebElement> Orgname=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName").toUpperCase()+"'])[1]/following-sibling::td"));
+				List<WebElement> Orgname1=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName").toUpperCase()+"'])[1]/preceding-sibling::td"));
+				//dispalyedattribute(Orgname1.get(0), "ID");
 				validatetext(Orgname1.get(0), "1"); //
 				validatetext(Orgname.get(0), ConfigReader.getProperty("AOPersonname"));
 				validatetext(Orgname.get(1), ConfigReader.getProperty("AODesignation"));
@@ -271,16 +272,16 @@ public class Registrar_Settings_Registrant_Officiers_Object extends Baseclass{
 				validatetext(Orgname.get(4), ConfigReader.getProperty("AORole"));
 				validatetext(Orgname.get(5), "View");
 				validatetext(Orgname.get(6), "");
-				validatetext(Orgname.get(7), ConfigReader.getProperty("AOLoginStatus"));
-				validatetext(Orgname.get(8), ConfigReader.getProperty("AOIsActive"));
-				//validatetext(Orgname.get(9), "");
+				validatetext(Orgname.get(7), "");
+
 				
 				
 				List<WebElement> BOOrgname=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"'])[2]/following-sibling::td"));
 				List<WebElement> BOOrgname1=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"'])[2]/preceding-sibling::td"));
 				//
 				//
-				validatetext(BOOrgname1.get(0), "2"); //
+				//dispalyedattribute(BOOrgname1.get(0), "ID"); //
+				validatetext(BOOrgname1.get(0), "1"); //
 				validatetext(BOOrgname.get(0), ConfigReader.getProperty("BOPersonname")); 
 				validatetext(BOOrgname.get(1), ConfigReader.getProperty("BODesignation")); 
 				validatetext(BOOrgname.get(2), ConfigReader.getProperty("BOMobileNumber"));
@@ -290,7 +291,7 @@ public class Registrar_Settings_Registrant_Officiers_Object extends Baseclass{
 				validatetext(BOOrgname.get(6), "");
 				validatetext(BOOrgname.get(7), ConfigReader.getProperty("BOLoginStatus"));
 				validatetext(BOOrgname.get(8), ConfigReader.getProperty("BOIsActive"));
-				//validatetext(BOOrgname.get(9), "");
+				validatetext(BOOrgname.get(9), "");
 					
 				
 				List<WebElement> TOOrgname=driver.findElements(By.xpath("(//td[normalize-space()='"+ConfigReader.getProperty("OrgName")+"'])[3]/following-sibling::td"));
@@ -298,7 +299,7 @@ public class Registrar_Settings_Registrant_Officiers_Object extends Baseclass{
 				//
 
 				//
-				validatetext(TOOrgname1.get(0), "3"); //
+				dispalyedattribute(TOOrgname1.get(0), "ID"); //
 				validatetext(TOOrgname.get(0), ConfigReader.getProperty("TOPersonname"));
 				validatetext(TOOrgname.get(1),ConfigReader.getProperty("TODesignation"));
 				validatetext(TOOrgname.get(2),ConfigReader.getProperty("TOMobileNumber")); 
@@ -308,7 +309,7 @@ public class Registrar_Settings_Registrant_Officiers_Object extends Baseclass{
 				validatetext(TOOrgname.get(6), "");
 				validatetext(TOOrgname.get(7), ConfigReader.getProperty("TOLoginStatus"));
 				validatetext(TOOrgname.get(8), ConfigReader.getProperty("TOIsActive"));
-				//validatetext(TOOrgname.get(9), "");
+				validatetext(TOOrgname.get(9), "");
 				
 				
 

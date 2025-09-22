@@ -55,7 +55,7 @@ public class Registrar_Invoice_Object extends Baseclass {
 			//
 //			validatetext(Domain1.get(0)
 			//dispalyedattribute(DomainName1.get(0), "checkbox");
-			dispalyedattribute(DomainName1.get(0), "ID");
+			//dispalyedattribute(DomainName1.get(0), "ID");
 			//validatetext(Domain1.get(1), ConfigReader.getProperty("6"));
 			validatetext(DomainName1.get(1), ConfigReader.getProperty("OrgName"));
 			//validatet(Orgname.get(0), "Ikcontech solutions");

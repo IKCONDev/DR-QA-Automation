@@ -17,7 +17,7 @@ public class Registrar_Logout_Object extends Baseclass {
 		PageFactory.initElements(RC, this);
 	}
 	
-	@FindBy(xpath="(//*[local-name()='svg'])[4]")
+	@FindBy(xpath="//div[@data-target='#exampleModal']")
 	public WebElement ClickProfilebutton;
 	@FindBy(xpath="//div[contains(text(),' Logout ')]")
 	public WebElement Clicklogoutbutton;

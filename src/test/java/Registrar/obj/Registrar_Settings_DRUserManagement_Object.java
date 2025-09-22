@@ -57,6 +57,8 @@ public class Registrar_Settings_DRUserManagement_Object extends Baseclass {
 		public WebElement DRUserManagementSearch ;
 		@FindBy(xpath="//mat-icon[normalize-space()='dashboard']")
 		public WebElement Dashboardsearch ;
+		@FindBy(xpath="//input[@class='ng-untouched ng-pristine ng-valid']")
+		public WebElement Drsearch ;
 		public void user_navigate_to_Settingspage_and_Check_DRUserManagement_Textvalidations(String src1) throws Exception {
 
 			WebElement ele = driver.findElement(By.xpath("//span[text()='Settings']"));
@@ -68,7 +70,7 @@ public class Registrar_Settings_DRUserManagement_Object extends Baseclass {
 			Thread.sleep(3000);
 			Clickelement(DRUserManagementSearch);
 			Thread.sleep(3000);
-
+			sendkeyweb(Drsearch, ConfigReader.getProperty("UserId"));
 
 			String SettingDrtabledata[]= { "Sl.No","User Id","User Name","Department", "Role", "Access","Status", "Edit","Delete"};
 			List<WebElement> values = driver.findElements(By.xpath("//table[@id='table1']//tr//th"));
@@ -80,9 +82,12 @@ public class Registrar_Settings_DRUserManagement_Object extends Baseclass {
 			}
 
 			List<WebElement> UserId=driver.findElements(By.xpath("//td[normalize-space()='"+ConfigReader.getProperty("UserId")+"']/following-sibling::td"));
-			List<WebElement> UserId1=driver.findElements(By.xpath("//td[normalize-space()='"+src1+"']/preceding-sibling::td"));
+			List<WebElement> UserId1=driver.findElements(By.xpath("//td[normalize-space()='"+ConfigReader.getProperty("UserId")+"']/preceding-sibling::td"));
 			
 			//
+			
+
+			
 			//dispalyedattribute(UserId1.get(0), "ID");
 			validatetext(UserId1.get(0),ConfigReader.getProperty("ID"));  
 			configWriter.setProperty("RDRUserName", UserId.get(0).getText());
