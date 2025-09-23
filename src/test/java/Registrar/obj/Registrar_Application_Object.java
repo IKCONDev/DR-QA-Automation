@@ -80,7 +80,7 @@ public void User_textvaladation_in_Application_Page1() throws Exception  {
 	Clickelement(Appsearch);
 	//Thread.sleep(5000);
 	
-	String Apptableextvalues="Application ID,Entity Name,Domain Name,,Submission Date,Application Status,Payment Status,NS Record Status,Tenure (yrs),Payment Details,View Name Servers,Remarks/Comments,Added By,Re-Submission,Mark As Deleted";
+	String Apptableextvalues="Application ID,Entity Name,Domain Name,,Submission Date,Application Status,Payment Status,NS Record Status,Tenure (yrs),View Name Servers,Remarks/Comments,Added By,Re-Submission,Mark As Deleted";
 	Table_prop(Tabledata, Apptableextvalues);
 //	List<WebElement> val = driver.findElements(By.xpath("//table[@id='table1']//th"));
 

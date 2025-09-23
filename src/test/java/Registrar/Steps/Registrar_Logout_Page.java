@@ -20,5 +20,9 @@ public class Registrar_Logout_Page {
 			Rlo.Registrar_can_Check_logout_funcionality();
 			
 			
+			
 			}
+	 
+	 
+	
 }
