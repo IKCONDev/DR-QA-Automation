@@ -214,7 +214,7 @@ public class Registrant_login_object extends Baseclass {
 		System.out.println(captcha);
 		Clickelement(Registration_button);
 		Thread.sleep(5000);
-		popupvalidate("Login Successful","OTP verification successful");
+		popupvalidate("User registration successful","OTP verification successful");
 		
 		 
 	}
@@ -856,12 +856,13 @@ public class Registrant_login_object extends Baseclass {
 	public List<WebElement> DeleteNS;
 	 
 
-	public void Validate_name_server_details_page() {
-		try {
-			validatetext(NS_Page_head, "Name Server Details");
-		} catch (Exception e) {
-		}
-		validatetext(NS_Page_head, "Name Server Details");
+	public void Validate_name_server_details_page() throws Exception {
+//		try {
+//			validatetext(NS_Page_head, "Name Server Details");
+//		} catch (Exception e) {
+//		}
+		Thread.sleep(3000);
+		validatetext(NS_Page_head, " Name Server Details");
 		String Table_cold1="Server,Name Server Host Name,DNS Service Provider,IPV4 Address,IPV6 Address,IP Service Provider,Actions";
 		Table_prop(TAble_col, Table_cold1);
 		validateattribute(Table_dataNS.get(0),"placeholder", "");
@@ -881,28 +882,28 @@ public class Registrant_login_object extends Baseclass {
 		
 		sendkeyweb(Table_dataNS.get(0),NSR+"a");
 		sendkeyweb(Table_dataNS.get(1),"Oracle");
-		sendkeyweb(Table_dataNS.get(2),IP1+"41");
-		sendkeyweb(Table_dataNS.get(3),IPV6+"41");
+		sendkeyweb(Table_dataNS.get(2),IP1+"51");
+		sendkeyweb(Table_dataNS.get(3),IPV6+"51");
 		sendkeyweb(Table_dataNS.get(4),"IDRBT");
 		sendkeyweb(Table_dataNS.get(5),NSR+"b");
 		sendkeyweb(Table_dataNS.get(6),"Oracle");
-		sendkeyweb(Table_dataNS.get(7),IP1+"42");
-		sendkeyweb(Table_dataNS.get(8),IPV6+"42");
+		sendkeyweb(Table_dataNS.get(7),IP1+"52");
+		sendkeyweb(Table_dataNS.get(8),IPV6+"52");
 		sendkeyweb(Table_dataNS.get(9),"IDRBT");
 
 		Clickelement(Addnsbutton);
 		
 		sendkeyweb(Table_dataNS.get(10),NSR+"c");
 		sendkeyweb(Table_dataNS.get(11),"Oracle");
-		sendkeyweb(Table_dataNS.get(12),IP1+"43");
-		sendkeyweb(Table_dataNS.get(13),IPV6+"43");
-		sendkeyweb(Table_dataNS.get(13),IPV6+"44");
+		sendkeyweb(Table_dataNS.get(12),IP1+"53");
+		sendkeyweb(Table_dataNS.get(13),IPV6+"53");
+		sendkeyweb(Table_dataNS.get(13),IPV6+"45");
 		sendkeyweb(Table_dataNS.get(14),"IDRBT");
 		
 		Clickelement(Addnsbutton);
 		sendkeyweb(Table_dataNS.get(15),NSR+"d");
 		sendkeyweb(Table_dataNS.get(16),"Oracle");
-		sendkeyweb(Table_dataNS.get(17),IP1+"45");
+		sendkeyweb(Table_dataNS.get(17),IP1+"46");
 		sendkeyweb(Table_dataNS.get(19),"IDRBT");
 		
 		try {

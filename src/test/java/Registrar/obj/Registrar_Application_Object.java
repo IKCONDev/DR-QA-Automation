@@ -98,7 +98,8 @@ public WebElement Domainapptxtval;
 public WebElement OrganizationNametxtval;
 @FindBy(xpath="//p[text()='Tenure (yrs)']")
 public WebElement Tenuretxtval;
-
+@FindBy(xpath="//div[@class='detail-item']/p")
+public List<WebElement> Appdetailsdata;
 @FindBy(xpath="//p[text()='Domain Name']")
 public WebElement DomainNametxtval;
 @FindBy(xpath="//p[text()='Submission Date']")
@@ -265,7 +266,7 @@ public void User_Can_Check_OrganisationDetails_Textvalidations_in_Applications_P
 
 	String Apptableextvalues="Application Id,Application Status,Tenure (yrs),Domain Name,Submission Date";
 			
-	Table_prop(Tabledata, Apptableextvalues);
+	Table_prop(Appdetailsdata, Apptableextvalues);
 
 	
 

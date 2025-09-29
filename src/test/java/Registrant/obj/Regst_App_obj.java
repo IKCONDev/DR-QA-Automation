@@ -64,7 +64,7 @@ public class Regst_App_obj extends Baseclass {
 	public void user_validate_application_page() {
 		
 
-		String s="Application ID,Entity Name,Domain Name,,Submission Date,Application Status,Payment Status,NS Record Status,Tenure (yrs),View Name Servers,Remarks/Comments,Added By,Re-Submission,Mark As Deleted";
+		String s="Application ID,Entity Name,Domain Name,,Submission Date,Application Status,Payment Status,NS Record Status,Tenure (yrs),View Name Servers,Remarks/Comments,Payment";
 		Table_prop(Table_col, s);
 	}
 	Scanner myObj = new Scanner(System.in);

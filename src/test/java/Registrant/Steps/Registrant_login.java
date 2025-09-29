@@ -122,7 +122,7 @@ public class Registrant_login {
 		RLO.User_upload_billing_contact_details(Aadhar, PAN);
 	}
 	@Then("User enters name server details {string} {string} {string}")
-	public void User_enters_name_server_details(String NSR1,String IP1,String IPV6) throws AWTException, InterruptedException {
+	public void User_enters_name_server_details(String NSR1,String IP1,String IPV6) throws Exception {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		RLO.Validate_name_server_details_page();
 		RLO.User_enters_name_server_details(NSR1,IP1,IPV6);
